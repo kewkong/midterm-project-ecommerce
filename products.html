@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+
+    <style>
+      /* เพิ่ม CSS นี้ในไฟล์ของคุณ */
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NOTE: ส่วนของ navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-md">
+        <a class="navbar-brand" href="index.html">Umami Meaw</a>
+
+        <div class="d-flex align-items-center gap-3 order-lg-last">
+          <a href="cart.html" class="text-reset text-decoration-none position-relative">
+            <i class="bi bi-bag fs-5"></i>
+
+            <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65em"> 0 <span class="visually-hidden">items in cart</span> </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse mx-4" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="products.html">Products</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <!-- NOTE: กำหนดให้ responsive ตามขนาดจอ โดยลดจำนวนคอลัมเมื่อจอเล็กลง และจอใหญ่สุดมี 6 คอลัม -->
+      <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3">
+        <!-- สินค้าที่1 -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="/storage/P1034237.JPG" class="card-img-top" alt="/storage/P1034237.JPG" />
+            <div class="card-body">
+              <h6 class="card-title text-truncate">เซ็ตแมวอิ่ม (กุ้ง)</h6>
+              <p class="card-text text-danger fw-bold">฿149</p>
+              <a href="#" class="btn btn-primary add-to-cart-btn" data-id="p01" data-name="เซ็ตแมวอิ่ม (กุ้ง)" data-price="149"> เพิ่มลงตะกร้า </a>
+            </div>
+          </div>
+        </div>
+        <!-- สินค้าที่2 -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="/storage/P1034224.JPG" class="card-img-top" alt="/storage/P1034224.JPG" />
+            <div class="card-body">
+              <h6 class="card-title text-truncate">เซ็ตแมวจุก (กุ้ง)</h6>
+              <p class="card-text text-danger fw-bold">฿229</p>
+              <a href="#" class="btn btn-primary add-to-cart-btn" data-id="p02" data-name="เซ็ตแมวจุก (กุ้ง)" data-price="229"> เพิ่มลงตะกร้า </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- สินค้าที่3 -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="/storage/P1034157.JPG" class="card-img-top" alt="/storage/P1034157.JPG" />
+            <div class="card-body">
+              <h6 class="card-title text-truncate">กุ้งดอง 12</h6>
+              <p class="card-text text-danger fw-bold">฿169</p>
+              <a href="#" class="btn btn-primary add-to-cart-btn" data-id="p03" data-name="กุ้งดอง 12" data-price="169"> เพิ่มลงตะกร้า </a>
+            </div>
+          </div>
+        </div>
+        <!-- สินค้าที่4 -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="/storage/P1034055.JPG" class="card-img-top" alt="/storage/P1034055.JPG" />
+            <div class="card-body">
+              <h6 class="card-title text-truncate">น้ำจิ้มซีฟู้ด</h6>
+              <p class="card-text text-danger fw-bold">฿35</p>
+              <a href="#" class="btn btn-primary add-to-cart-btn" data-id="p04" data-name="น้ำจิ้มซีฟู้ด" data-price="35"> เพิ่มลงตะกร้า </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- สินค้าที่5 -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="/storage/P1010114.JPG" class="card-img-top" alt="/storage/P1010114.JPG" />
+            <div class="card-body">
+              <h6 class="card-title text-truncate">เซ็ตแมวอิ่ม (แมงกระพรุน)</h6>
+              <p class="card-text text-danger fw-bold">฿129</p>
+              <a href="#" class="btn btn-primary add-to-cart-btn" data-id="p05" data-name="เซ็ตแมวอิ่ม (แมงกระพรุน)" data-price="129"> เพิ่มลงตะกร้า </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- สินค้าที่6 -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="/storage/P1010139.JPG" class="card-img-top" alt="/storage/P1010139.JPG" />
+            <div class="card-body">
+              <h6 class="card-title text-truncate">เซ็ตแมวจุก (แมงกระพรุน)</h6>
+              <p class="card-text text-danger fw-bold">฿189</p>
+              <a href="#" class="btn btn-primary add-to-cart-btn" data-id="p06" data-name="เซ็ตแมวจุก (แมงกระพรุน)" data-price="189"> เพิ่มลงตะกร้า </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- สินค้าที่7 -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="/storage/P1034129.JPG" class="card-img-top" alt="/storage/P1034129.JPG" />
+            <div class="card-body">
+              <h6 class="card-title text-truncate">กุ้งดอง 7</h6>
+              <p class="card-text text-danger fw-bold">฿99</p>
+              <a href="#" class="btn btn-primary add-to-cart-btn" data-id="p07" data-name="กุ้งดอง 7" data-price="99"> เพิ่มลงตะกร้า </a>
+            </div>
+          </div>
+        </div>
+        <!-- สินค้าที่8 -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="/storage/P1034205.JPG" class="card-img-top" alt="/storage/P1034205.JPG" />
+            <div class="card-body">
+              <h6 class="card-title text-truncate">เซ็ตแมวอิ่มคู่ (กุ้ง)</h6>
+              <p class="card-text text-danger fw-bold">฿299</p>
+              <a href="#" class="btn btn-primary add-to-cart-btn" data-id="p08" data-name="เซ็ตแมวอิ่มคู่ (กุ้ง)" data-price="299"> เพิ่มลงตะกร้า </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll(".add-to-cart-btn").forEach((button) => {
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const product = {
+            id: this.getAttribute("data-id"),
+            name: this.getAttribute("data-name"),
+            price: parseFloat(this.getAttribute("data-price")),
+            quantity: 1,
+          };
+
+          let cart = JSON.parse(localStorage.getItem("myCart")) || [];
+          let existingItemIndex = cart.findIndex((item) => item.id === product.id);
+
+          if (existingItemIndex !== -1) {
+            cart[existingItemIndex].quantity += 1;
+          } else {
+            cart.push(product);
+          }
+
+          localStorage.setItem("myCart", JSON.stringify(cart));
+
+          // +++ เรียกฟังก์ชันอัปเดตตัวเลขตรงนี้เลย +++
+          updateCartBadge();
+
+          alert(`เพิ่ม ${product.name} ลงตะกร้าแล้ว!`);
+        });
+      });
+
+      // ฟังก์ชันสำหรับอัปเดตตัวเลขบนตะกร้า
+      function updateCartBadge() {
+        // 1. ดึงข้อมูลตะกร้า
+        let cart = JSON.parse(localStorage.getItem("myCart")) || [];
+
+        // 2. นับจำนวนสินค้าทั้งหมด (เอา quantity ของทุกชิ้นมาบวกกัน)
+        // ใช้ reduce เป็นวิธีที่สั้นและมีประสิทธิภาพในการหาผลรวม
+        let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+        // 3. อัปเดตตัวเลขบน Badge
+        let badge = document.getElementById("cart-badge");
+        if (badge) {
+          badge.innerText = totalItems;
+
+          // (ตัวเลือกเสริม) ซ่อน Badge ถ้าไม่มีสินค้าเลย เพื่อความสวยงาม
+          if (totalItems === 0) {
+            badge.style.display = "none";
+          } else {
+            badge.style.display = "inline-block";
+          }
+        }
+      }
+
+      // เรียกใช้ฟังก์ชันทันทีเมื่อโหลดหน้าเว็บ เพื่อให้ตัวเลขแสดงถูกต้องตั้งแต่เริ่ม
+      updateCartBadge();
+    </script>
+
+    <!-- NOTE:ส่วนของ Content -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

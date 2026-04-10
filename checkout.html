@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+  </head>
+  <body>
+    <!-- NOTE: ส่วนของ navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-md">
+        <a class="navbar-brand" href="index.html">Umami Meaw</a>
+
+        <div class="d-flex align-items-center gap-3 order-lg-last">
+          <a href="cart.html" class="text-reset text-decoration-none position-relative">
+            <i class="bi bi-bag fs-5"></i>
+
+            <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65em"> 0 <span class="visually-hidden">items in cart</span> </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse mx-4" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Products</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-5 pb-5">
+      <div class="py-3 text-center mb-4">
+        <h2>ดำเนินการสั่งซื้อ</h2>
+        <p class="lead">กรุณากรอกข้อมูลการจัดส่งของคุณให้ครบถ้วน</p>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">สรุปคำสั่งซื้อ</span>
+            <span id="checkout-badge" class="badge bg-primary rounded-pill">0</span>
+          </h4>
+          <ul class="list-group mb-3" id="checkout-summary"></ul>
+          <div class="card p-3 border-0 bg-white shadow-sm">
+            <div class="d-flex justify-content-between">
+              <h5 class="mb-0">ยอดรวมทั้งสิ้น</h5>
+              <strong id="checkout-total" class="text-danger fs-5">฿0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-7 col-lg-8">
+          <div class="card border-0 shadow-sm p-4">
+            <h4 class="mb-3">ข้อมูลการจัดส่ง</h4>
+
+            <!-- NOTE: ฟอร์มกรอกที่อยู่จัดส่ง และเลือกช่องทางการชำระเงิน -->
+            <form id="checkout-form">
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <label for="firstName" class="form-label">ชื่อ</label>
+                  <input type="text" class="form-control" id="firstName" required />
+                </div>
+                <div class="col-sm-6">
+                  <label for="lastName" class="form-label">นามสกุล</label>
+                  <input type="text" class="form-control" id="lastName" required />
+                </div>
+                <div class="col-12">
+                  <label for="phone" class="form-label">เบอร์โทรศัพท์</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="08x-xxx-xxxx" required />
+                </div>
+                <div class="col-12">
+                  <label for="address" class="form-label">ที่อยู่จัดส่ง</label>
+                  <textarea class="form-control" id="address" rows="3" placeholder="รายละเอียดที่อยู่..." required></textarea>
+                </div>
+              </div>
+
+              <hr class="my-2" />
+
+              <label for="address" class="form-label">ช่องทางชำระเงิน</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioPayment" id="radioPayment1" />
+                <label class="form-check-label" for="radioPayment1"> Credit Card </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioPayment" id="radioPayment2" checked />
+                <label class="form-check-label" for="radioPayment2"> Paypal </label>
+              </div>
+
+              <hr class="my-4" />
+              <button class="w-100 btn btn-success btn-lg" type="submit">ยืนยันการสั่งซื้อ</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let cart = JSON.parse(localStorage.getItem("myCart")) || [];
+
+        // เช็คตะกร้าว่าง
+        if (cart.length === 0) {
+          alert("ไม่พบสินค้าในตะกร้า กรุณาเลือกสินค้าก่อนครับ");
+          window.location.href = "products.html";
+          return;
+        }
+
+        // แสดงสรุปออเดอร์
+        let summaryContainer = document.getElementById("checkout-summary");
+        let totalDisplay = document.getElementById("checkout-total");
+        let badgeDisplay = document.getElementById("checkout-badge");
+        let cartBadge = document.getElementById("cart-badge"); // ไอคอนตะกร้าบน navbar
+
+        let totalPrice = 0;
+        let totalItems = 0;
+
+        cart.forEach((item) => {
+          let itemTotal = item.price * item.quantity;
+          totalPrice += itemTotal;
+          totalItems += item.quantity;
+
+          let li = document.createElement("li");
+
+          li.className = "list-group-item d-flex justify-content-between lh-sm"; //justify-content-between เพื่อให้ขยายตัวให้เต็มcontent
+          li.innerHTML = `
+            <div>
+              <h6 class="my-0">${item.name}</h6>
+              <small class="text-muted">จำนวน: ${item.quantity} ชิ้น (฿${item.price}/ชิ้น)</small>
+            </div>
+            <span class="text-muted">฿${itemTotal}</span>
+          `;
+          summaryContainer.appendChild(li);
+        });
+
+        totalDisplay.innerText = `฿${totalPrice}`;
+        badgeDisplay.innerText = totalItems;
+        if (cartBadge) cartBadge.innerText = totalItems;
+
+        // จัดการเมื่อกดปุ่มยืนยัน
+        document.getElementById("checkout-form").addEventListener("submit", function (e) {
+          e.preventDefault(); // หยุดการโหลดหน้าใหม่
+
+          // ดึงค่าจากฟอร์ม
+          let customerData = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            phone: document.getElementById("phone").value,
+            address: document.getElementById("address").value,
+          };
+
+          // บันทึกข้อมูลลูกค้าลง Local Storage
+          localStorage.setItem("customerInfo", JSON.stringify(customerData));
+
+          // แจ้งเตือนและไปหน้าถัดไป
+          alert("บันทึกข้อมูลเรียบร้อยแล้ว!");
+          window.location.href = "success.html"; // หรือหน้าที่ต้องการไปต่อ
+        });
+      });
+    </script>
+
+    <!-- NOTE:ส่วนของ Content -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
